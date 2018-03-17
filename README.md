@@ -9,6 +9,8 @@ In your terminal follow the commands:<br>
 Now the server is running, next step is to download the page to communicate with the server <br>
 
 Now, you can use xampp to the front end page. <br>
-then, in the xampp directory: git clone https://github.com/yuriprotasio/ATM-System.git <br>
+then, in the xampp directory: <br>
+1 - git clone https://github.com/yuriprotasio/ATM-System.git <br>
 
+Start apache in xampp<br>
 Now, type in the navigator the address of the system location in xampp. It is something like localhost/atm-system
