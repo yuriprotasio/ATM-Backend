@@ -5,7 +5,8 @@ In your terminal follow the commands:<br>
 1 - git clone https://github.com/yuriprotasio/ATM-Backend.git <br>
 2 - cd atm-backend <br>
 3 - npm install <br>
-4 - nodemon server.js <br>
+4 - npm install -g nodemon <br>
+5 - nodemon server.js <br>
 Now the server is running, next step is to download the page to communicate with the server <br>
 
 Now, you can use xampp to the front end page. <br>
