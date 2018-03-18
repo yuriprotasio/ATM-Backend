@@ -1,4 +1,6 @@
 # ATM-Backend
+To access it online, go to: http://167.99.111.199
+
 Server side using NodeJS and MongoDB
 
 In your terminal follow the commands:<br>
