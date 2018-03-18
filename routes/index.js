@@ -61,6 +61,7 @@ router.get('/', (req, res) => {
 	});
 });
 
+// insert or update the money notes
 router.post('/addMoney', (req, res) =>{
 	let body = req.body;
 	let codnota  = body.cod;
@@ -72,12 +73,9 @@ router.post('/addMoney', (req, res) =>{
 
 		finalValue = parseInt(body.money) + parseInt(notas[0].value);
 
+		//Update with the note and quantity selected
 		modelnotas.findOneAndUpdate({cod:codnota}, {$set:{value: finalValue}}, {new:true}, function(err, doc){
-			if (err) {
-				console.log("error")
-			}else{
-				console.log("Updated");
-			}
+			if (err) {console.log("error");}
 			res.redirect('/');
 		});
 	});
@@ -88,27 +86,25 @@ router.post('/addMoney', (req, res) =>{
 router.post('/getMoney', (req, res) =>{
 	let body = req.body;
 
+	//Find, and if there is no money, send an error message
 	modelnotas.find({}, (err, notas) =>{
 		let cem = 0, cinquenta = 0, vinte = 0, dez = 0;
 		if(err) throw err;
 		if(notas == ""){
 			res.send({error:true});
 		}else{
+			//get the money notes value
 			modelnotas.find({cod:100},(req,nota)=>{
 				cem = nota[0].value;
-				console.log(cem);
 
 				modelnotas.find({cod:50},(req,nota)=>{
 					cinquenta = nota[0].value;
-					console.log(cinquenta);
 
 					modelnotas.find({cod:20},(req,nota)=>{
 						vinte = nota[0].value;
-						console.log(vinte);
 
 						modelnotas.find({cod:10},(req,nota)=>{
 							dez = nota[0].value;
-							console.log(dez);
 
 							var allMoney = body.money;
 							console.log(allMoney);
@@ -182,29 +178,23 @@ router.post('/getMoney', (req, res) =>{
 							vinte = vinte -twentyIncrement;
 							dez = dez -tenIncrement;
 							result = allMoney % value;
-							console.log(cem + " " +cinquenta+ " " +vinte+ " " +dez);
 
-							console.log("Final Result: "+ result);
 							if (result != 0) {
 								res.send({error:true});
 							}else{
-								console.log(hundredIncrement + " hundred \n" + fifityIncrement + " fifity \n" + twentyIncrement + " twenty \n" + tenIncrement + " ten");
+								//Update each money value in the database
 								modelnotas.findOneAndUpdate({cod:100}, {$set:{value: cem}}, {new: true}, function(err, doc){
-									if(err){
-								        console.log("Something wrong when updating data!");
-								    }
+									if(err){console.log("100 increment error");}
+
 								    modelnotas.findOneAndUpdate({cod:50}, {$set:{value: cinquenta}}, {new: true}, function(err, doc){
-										if(err){
-									        console.log("Something wrong when updating data!");
-									    }
+										if(err){console.log("50 increment error");}
+
 									    modelnotas.findOneAndUpdate({cod:20}, {$set:{value: vinte}}, {new: true}, function(err, doc){
-											if(err){
-										        console.log("Something wrong when updating data!");
-										    }
+											if(err){console.log("20 increment error");}
+
 										    modelnotas.findOneAndUpdate({cod:10}, {$set:{value: dez}}, {new: true}, function(err, doc){
-												if(err){
-											        console.log("Something wrong when updating data!");
-											    }
+												if(err){console.log("10 increment error");}
+
 											    res.send({error: false, cem: hundredIncrement, cinquenta: fifityIncrement, vinte: twentyIncrement, dez: tenIncrement});
 											});	
 										});	
