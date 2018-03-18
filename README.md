@@ -18,3 +18,8 @@ then, in the xampp directory: <br>
 Start apache in xampp<br>
 Now, type in the navigator the address of the system location in xampp. It is something like localhost/atm-system<br>
 Make sure your mongodb database is running and everything will work fine.
+
+### All Urls
+- Access Online: http://167.99.111.199
+- Backend Repository: https://github.com/yuriprotasio/ATM-Backend.git
+- Client Repository: https://github.com/yuriprotasio/ATM-System.git
