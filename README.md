@@ -23,3 +23,5 @@ Make sure your mongodb database is running and everything will work fine.
 - Access Online: http://167.99.111.199
 - Backend Repository: https://github.com/yuriprotasio/ATM-Backend.git
 - Client Repository: https://github.com/yuriprotasio/ATM-System.git
+
+By Yuri Protásio - https://jogostorrent.cc Onwer
